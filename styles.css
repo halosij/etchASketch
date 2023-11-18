@@ -1,5 +1,19 @@
 #squaredivsContainer{
-    width: 1000px;
-    height: 1000px;
-    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #1B3358;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.backgroundContainer{
+    display: flex;
+    justify-content: center;
+    background-color: #06142e;
+}
+
+.square:hover{
+    background-color: blue;
+    
 }
