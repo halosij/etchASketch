@@ -7,13 +7,47 @@
     
 }
 
-.backgroundContainer{
+body{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: #06142e;
+    gap: 20px;
 }
 
-.square:hover{
-    background-color: blue;
+button{
+    width: 120px;
+    height: 40px;
+    background-color: #f1916d;
+    border: none;
+    border-radius: 12px;
+    color: #FFFFFF;
+    margin-top: 50px; 
+}
+
+button:hover{
+    background-color: #c06645;
+}
+
+/* .square:hover{
+    background-color: #573e66;
     
 }
+*/
+
+.square{
+    background-color: #F5D7DB;
+
+} 
+
+.square:hover {
+    background-color: #573e66;
+    transition: background-color 0s ease; /* Übergangseffekt für den Hover auf 0 setzen */
+  }
+  
+  .square:not(:hover) {
+    transition: background-color 1s ease; /* Übergangseffekt für den Nicht-Hover-Zustand */
+  }
+ 
+  
