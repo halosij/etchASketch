@@ -33,6 +33,33 @@
 
         selectSquaresButton.addEventListener('click', () => {
              let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+             console.log(userInput)
+             userInput = parseInt(userInput);
+             console.log(userInput);
+             if(isNaN(userInput) || !(userInput % 1 === 0)){
+                alert("Please insert a valid number!")
+                return;
+             }
+             if(userInput > 100){
+                userInput = 100;
+             }
+             
+            // removed border for now because of formatting issues with filling
+            // the squaredivscontainer with squares
+            let allsquares = userInput * userInput;
+            let squaresize = Math.sqrt(250000/allsquares);
+            squaredivsContainer.innerHTML = '';
+            
+             for(let x = 1; x <= userInput * userInput; x++){
+                let newsquare = document.createElement('div');
+                newsquare.style.width = squaresize.toString() + "px";
+                newsquare.style.height = squaresize.toString() + "px";
+                //newsquare.style.border = "1px solid #1B3358";
+                newsquare.style.color = "#F5D7DB";
+                newsquare.className = "square"; 
+                squaredivsContainer.appendChild(newsquare);
+             }
+
         });
     </script>
 
