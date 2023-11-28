@@ -7,8 +7,12 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    
-    <button id="selectSquaresButton">Select Squares</button>
+    <div class="buttonContainer">
+        <button id="rcModeTriggerButton" class="tooltip">Activate RD-Mode
+            <span class="tooltiptext">Activate Random Color Mode</span>
+        </button>
+        <button id="selectSquaresButton">Select Squares</button>
+    </div>
     <div id="squaredivsContainer">
 
     </div>
@@ -54,13 +58,29 @@
                 let newsquare = document.createElement('div');
                 newsquare.style.width = squaresize.toString() + "px";
                 newsquare.style.height = squaresize.toString() + "px";
-                //newsquare.style.border = "1px solid #1B3358";
+                /*newsquare.style.border = "1px solid #1B3358";*/
                 newsquare.style.color = "#F5D7DB";
                 newsquare.className = "square"; 
                 squaredivsContainer.appendChild(newsquare);
              }
 
         });
+
+        let rcModeTriggerButton = document.querySelector('#rcModeTriggerButton');
+        let trigger = false;
+        rcModeTriggerButton.addEventListener('click', () => {
+            if(trigger === false){
+                rcModeTriggerButton.textContent = "Deactivate RC-Mode";
+                trigger = true;
+            }
+            else{
+                rcModeTriggerButton.textContent = "Activate RC-Mode";
+                trigger = false;
+            }
+            
+        });
+
+        
     </script>
 
 </body>
