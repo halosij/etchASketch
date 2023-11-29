@@ -41,14 +41,13 @@ button:hover{
 }
 */
 
-.square{
+.newsquare{
     background-color: #F5D7DB;
-
 } 
 
-.square:hover {
+.newsquare:hover {
     background-color: #573e66;
-    transition: background-color 0s ease; /* Übergangseffekt für den Hover auf 0 setzen */
+    /*transition: background-color 0s ease;*/ 
   }
   
   .square:not(:hover) {

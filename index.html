@@ -28,7 +28,8 @@
             square.style.height = "31.25px";
             //square.style.border = "1px solid #1B3358";
             square.style.color = "#F5D7DB";
-            square.className = "square";
+            square.className = "newsquare square";
+            
 
             squaredivsContainer.appendChild(square);
         }
@@ -36,7 +37,46 @@
         const selectSquaresButton = document.querySelector('#selectSquaresButton');
 
         selectSquaresButton.addEventListener('click', () => {
-             let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+            if(trigger === true){
+                generateRandomColorSquares();
+            }
+            else if(trigger === false){
+                generateSquares();
+            }
+            
+        });
+
+        let rcModeTriggerButton = document.querySelector('#rcModeTriggerButton');
+        let trigger = false;
+        rcModeTriggerButton.addEventListener('click', () => {
+            if(trigger === false){
+                trigger = true;
+                rcModeTriggerButton.textContent = "Deactivate RC-Mode";
+            }
+            else{
+                trigger = false;
+                rcModeTriggerButton.textContent = "Activate RC-Mode";
+            }
+        });
+
+
+
+        function generateRandomColor(){
+            let hexadecimallist = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+            let randomcolor = "#";
+            for(let x = 1; x <= 6; x++){
+                let randomitem = randomIntFromInterval(0, 15);
+                randomcolor += hexadecimallist[randomitem];
+            }
+            return randomcolor;
+        }
+
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        function generateSquares(){
+            let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
              console.log(userInput)
              userInput = parseInt(userInput);
              console.log(userInput);
@@ -60,27 +100,100 @@
                 newsquare.style.height = squaresize.toString() + "px";
                 /*newsquare.style.border = "1px solid #1B3358";*/
                 newsquare.style.color = "#F5D7DB";
-                newsquare.className = "square"; 
+                newsquare.className = "newsquare square"; 
                 squaredivsContainer.appendChild(newsquare);
              }
+        }
 
-        });
+        // function generateRandomColorSquares(){
+        //     if(trigger === false){
+        //         rcModeTriggerButton.textContent = "Deactivate RC-Mode";
+        //         trigger = true;
 
-        let rcModeTriggerButton = document.querySelector('#rcModeTriggerButton');
-        let trigger = false;
-        rcModeTriggerButton.addEventListener('click', () => {
-            if(trigger === false){
-                rcModeTriggerButton.textContent = "Deactivate RC-Mode";
-                trigger = true;
-            }
-            else{
-                rcModeTriggerButton.textContent = "Activate RC-Mode";
-                trigger = false;
-            }
+        //      let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+        //      console.log(userInput)
+        //      userInput = parseInt(userInput);
+        //      console.log(userInput);
+        //      if(isNaN(userInput) || !(userInput % 1 === 0)){
+        //         alert("Please insert a valid number!")
+        //         return;
+        //      }
+        //      if(userInput > 100){
+        //         userInput = 100;
+        //      }
+             
+        //     // removed border for now because of formatting issues with filling
+        //     // the squaredivscontainer with squares
+        //     let allsquares = userInput * userInput;
+        //     let squaresize = Math.sqrt(250000/allsquares);
+        //     squaredivsContainer.innerHTML = '';
             
-        });
+        //      for(let x = 1; x <= userInput * userInput; x++){
+        //         let newsquare = document.createElement('div');
+        //         newsquare.style.width = squaresize.toString() + "px";
+        //         newsquare.style.height = squaresize.toString() + "px";
+        //         /*newsquare.style.border = "1px solid #1B3358";*/
+        //         newsquare.style.backgroundColor = "#F5D7DB";
+        //         newsquare.style.color = "#F5D7DB";
+        //         newsquare.className = "square";
+                
 
-        
+        //         newsquare.addEventListener('mouseover', () => {
+        //             newsquare.style.backgroundColor = generateRandomColor();
+        //         });
+        //         squaredivsContainer.appendChild(newsquare);
+        //         newsquare.addEventListener('mouseout', () => {
+        //             newsquare.style.backgroundColor = "#F5D7DB";
+        //         });
+        //      }
+        //     }
+        //     else{
+        //         rcModeTriggerButton.textContent = "Activate RC-Mode";
+        //         generateSquares();
+        //         trigger = false;
+        //     }
+        // }
+
+        function generateRandomColorSquares(){
+             let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+             console.log(userInput)
+             userInput = parseInt(userInput);
+             console.log(userInput);
+             if(isNaN(userInput) || !(userInput % 1 === 0)){
+                alert("Please insert a valid number!")
+                return;
+             }
+             if(userInput > 100){
+                userInput = 100;
+             }
+             
+            // removed border for now because of formatting issues with filling
+            // the squaredivscontainer with squares
+            let allsquares = userInput * userInput;
+            let squaresize = Math.sqrt(250000/allsquares);
+            squaredivsContainer.innerHTML = '';
+            
+             for(let x = 1; x <= userInput * userInput; x++){
+                let newsquare = document.createElement('div');
+                newsquare.style.width = squaresize.toString() + "px";
+                newsquare.style.height = squaresize.toString() + "px";
+                /*newsquare.style.border = "1px solid #1B3358";*/
+                newsquare.style.backgroundColor = "#F5D7DB";
+                newsquare.style.color = "#F5D7DB";
+                newsquare.className = "square";
+                
+
+                newsquare.addEventListener('mouseover', () => {
+                    newsquare.style.backgroundColor = generateRandomColor();
+                });
+                squaredivsContainer.appendChild(newsquare);
+                newsquare.addEventListener('mouseout', () => {
+                    newsquare.style.backgroundColor = "#F5D7DB";
+                });
+             }
+            
+            
+        }
     </script>
 
 </body>
