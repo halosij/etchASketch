@@ -38,9 +38,11 @@
 
         selectSquaresButton.addEventListener('click', () => {
             if(trigger === true){
+                askSquareSize();
                 generateRandomColorSquares();
             }
             else if(trigger === false){
+                askSquareSize();
                 generateSquares();
             }
             
@@ -52,10 +54,12 @@
             if(trigger === false){
                 trigger = true;
                 rcModeTriggerButton.textContent = "Deactivate RC-Mode";
+                generateRandomColorSquares();
             }
             else{
                 trigger = false;
                 rcModeTriggerButton.textContent = "Activate RC-Mode";
+                generateSquares();
             }
         });
 
@@ -74,9 +78,8 @@
         function randomIntFromInterval(min, max) { // min and max included 
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
-
+        let userInput = 16;
         function generateSquares(){
-            let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
              console.log(userInput)
              userInput = parseInt(userInput);
              console.log(userInput);
@@ -105,67 +108,18 @@
              }
         }
 
-        // function generateRandomColorSquares(){
-        //     if(trigger === false){
-        //         rcModeTriggerButton.textContent = "Deactivate RC-Mode";
-        //         trigger = true;
-
-        //      let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
-        //      console.log(userInput)
-        //      userInput = parseInt(userInput);
-        //      console.log(userInput);
-        //      if(isNaN(userInput) || !(userInput % 1 === 0)){
-        //         alert("Please insert a valid number!")
-        //         return;
-        //      }
-        //      if(userInput > 100){
-        //         userInput = 100;
-        //      }
-             
-        //     // removed border for now because of formatting issues with filling
-        //     // the squaredivscontainer with squares
-        //     let allsquares = userInput * userInput;
-        //     let squaresize = Math.sqrt(250000/allsquares);
-        //     squaredivsContainer.innerHTML = '';
-            
-        //      for(let x = 1; x <= userInput * userInput; x++){
-        //         let newsquare = document.createElement('div');
-        //         newsquare.style.width = squaresize.toString() + "px";
-        //         newsquare.style.height = squaresize.toString() + "px";
-        //         /*newsquare.style.border = "1px solid #1B3358";*/
-        //         newsquare.style.backgroundColor = "#F5D7DB";
-        //         newsquare.style.color = "#F5D7DB";
-        //         newsquare.className = "square";
-                
-
-        //         newsquare.addEventListener('mouseover', () => {
-        //             newsquare.style.backgroundColor = generateRandomColor();
-        //         });
-        //         squaredivsContainer.appendChild(newsquare);
-        //         newsquare.addEventListener('mouseout', () => {
-        //             newsquare.style.backgroundColor = "#F5D7DB";
-        //         });
-        //      }
-        //     }
-        //     else{
-        //         rcModeTriggerButton.textContent = "Activate RC-Mode";
-        //         generateSquares();
-        //         trigger = false;
-        //     }
-        // }
-
         function generateRandomColorSquares(){
-             let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
-             console.log(userInput)
-             userInput = parseInt(userInput);
-             console.log(userInput);
-             if(isNaN(userInput) || !(userInput % 1 === 0)){
-                alert("Please insert a valid number!")
-                return;
-             }
-             if(userInput > 100){
-                userInput = 100;
-             }
+             //let userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+            //  console.log(userInput)
+            //  userInput = parseInt(userInput);
+            //  console.log(userInput);
+            //  if(isNaN(userInput) || !(userInput % 1 === 0)){
+            //     alert("Please insert a valid number!")
+            //     return;
+            //  }
+            //  if(userInput > 100){
+            //     userInput = 100;
+            //  }
              
             // removed border for now because of formatting issues with filling
             // the squaredivscontainer with squares
@@ -192,8 +146,12 @@
                 });
              }
             
+           
             
         }
+        function askSquareSize(){
+                userInput = prompt("How large should your grid be?(Max. 100 -> 100*100)");
+             }
     </script>
 
 </body>
